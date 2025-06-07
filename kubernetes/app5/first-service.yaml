@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ns1
+  name: first-service
+spec:
+  type: ClusterIP
+  selector:
+    app: myMultiPodApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

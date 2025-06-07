@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-container-with-service-failure
+  namespace: ns1
+  labels:
+    app: my-init-container
+spec:
+  containers: #note this is not initContainers its a plain container created for error generation.
+    - name: my-init-service
+      image: busybox
+      command: ['sh', '-c', "until nslookup myservice.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]

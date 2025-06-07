@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  namespace: ns1
+  name: my-replica-set
+  labels:
+    app: myReplicaSetApp1
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: myMultiPodApp
+  template:
+    metadata:
+      labels:
+        app: myMultiPodApp
+    spec:
+      containers:
+      - name: httpd-container
+        image: httpd
+        ports:
+        - containerPort: 80
+      - name: mongo-container
+        image: mongo
+        ports:
+        - containerPort: 27017
+
+# This YAML file defines a Kubernetes ReplicaSet. Here's a summary of what each part does:
+
+# - **apiVersion**: Specifies the API version (`apps/v1`) used to create the ReplicaSet.
+# - **kind**: Indicates that this resource is a `ReplicaSet`.
+# - **metadata**: Provides metadata for the ReplicaSet, including:
+#   - `namespace`: The namespace (`ns1`) where the ReplicaSet will be created.
+#   - `name`: The name of the ReplicaSet (`my-replica-set`).
+#   - `labels`: Labels for the ReplicaSet (`app: myReplicaSetApp1`).
+# - **spec**: Defines the desired state of the ReplicaSet, including:
+#   - `replicas`: The number of pod replicas to maintain (5).
+#   - `selector`: Specifies how to identify the pods managed by this ReplicaSet using labels (`app: myMultiPodApp`).
+#   - `template`: Describes the pod template used to create new pods, including:
+#     - `metadata`: Labels for the pods (`app: myMultiPodApp`).
+#     - `spec`: The specification for the pod's containers:
+#       - `containers`: A list of containers to run in each pod:
+#         - `httpd-container`: A container running the `httpd` image, exposing port 80.
+#         - `mongo-container`: A container running the `mongo` image, exposing port 27017.

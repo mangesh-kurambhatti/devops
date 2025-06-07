@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-sidecar-container
+  namespace: ns1
+spec:
+  containers:
+    - name: my-httpd
+      image: httpd
+      ports:
+        - containerPort: 80
+    - name: my-mogodb
+      image: mongo
+      ports:
+        - containerPort: 27017

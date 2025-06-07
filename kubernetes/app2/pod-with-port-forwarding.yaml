@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: nm1
+  name: pod-with-port-forwarding
+
+spec:
+  containers:
+  - name: httpd-container
+    image: httpd
+    ports:
+    - containerPort: 80
+      protocol: TCP
+      name: http-port
