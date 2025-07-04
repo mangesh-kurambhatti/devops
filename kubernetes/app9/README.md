@@ -1,6 +1,5 @@
 ## Deployment
 
-
 - Represents the logical deployment of a application
 - Internally it uses replica set to replicate the pods
 - Can be updated or rollbacked using rollback commands
@@ -30,7 +29,7 @@ OR
 
 ### Test Deployments with below steps :
 
-1. Create a deployment with scripr : [deployment](./deployments1.yaml)
+1. Create a deployment with script : [deployment](./deployments1.yaml)
 2. Run below command to create deployment
     `kubectl apply -f deployments1.yaml`
 3. Get all details with below command :
@@ -55,3 +54,10 @@ OR
 > - Deployment created
 > - Internally replica set is also created
 
+#### At very high level Deployment can be visualized as below :
+
+![Document](./images/Diagram-deployment.jpg)
+
+### Rollout
+
+***[webiste](./website/)*** directory holds all the files required for demonstarting Rollout example..!

@@ -1,8 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment 
+kind: ReplicaSet
 metadata:
-  name: my-deployment
   namespace: ns1
+  name: my-replica-set
+  labels:
+    app: myReplicaSetApp1
 spec:
   replicas: 3
   selector:
@@ -14,7 +16,7 @@ spec:
         app: myapp
     spec:
       containers:
-        - name: my-http-container
-          image: httpd
-          ports:
-            - containerPort: 80
+      - name: httpd-container
+        image: httpd
+        ports:
+        - containerPort: 80
